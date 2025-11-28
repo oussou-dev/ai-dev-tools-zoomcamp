@@ -3,11 +3,13 @@
 {% block title %}Delete Task - Todo{% endblock %}
 
 {% block content %}
-  <h2>Delete Task</h2>
-  <p>Are you sure you want to delete "{{ object.title }}"?</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirm delete</button>
-  </form>
-  <p><a href="{% url 'home' %}">Back</a></p>
+  <div class="max-w-xl mx-auto">
+    <h2 class="text-xl font-semibold mb-4">Delete Task</h2>
+    <p class="mb-4 text-slate-300">Are you sure you want to delete "<strong>{{ object.title }}</strong>"?</p>
+    <form method="post" class="flex gap-3">
+      {% csrf_token %}
+      <button type="submit" class="rounded-md bg-rose-500 px-4 py-2 text-white">Confirm delete</button>
+      <a href="{% url 'home' %}" class="rounded-md px-4 py-2 border border-slate-700">Cancel</a>
+    </form>
+  </div>
 {% endblock %}

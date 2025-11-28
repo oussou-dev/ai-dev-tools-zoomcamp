@@ -1,0 +1,4 @@
+Django==5.2.8
+# Optional runtime servers (install if you plan to run under ASGI/production)
+uvicorn
+whitenoise

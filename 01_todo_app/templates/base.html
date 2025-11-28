@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Todo app{% endblock %}</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <!-- Built Tailwind CSS -->
+    <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
   </head>
-  <body>
-    <header>
-      <h1>Todo App</h1>
+  <body class="min-h-screen bg-gradient-to-b from-slate-900 to-slate-800 text-slate-100">
+    <header class="border-b border-slate-700">
+      <div class="container mx-auto px-4 py-6">
+        <h1 class="text-2xl font-semibold">Todo App</h1>
+      </div>
     </header>
 
-    <main>
+    <main class="container mx-auto px-4 py-8">
       {% block content %}{% endblock %}
     </main>
 
-    <footer>
-      <p>© {{ now.year }}</p>
+    <footer class="border-t border-slate-700 mt-12">
+      <div class="container mx-auto px-4 py-4 text-sm text-slate-400">© {{ now.year }}</div>
     </footer>
   </body>
 </html>
