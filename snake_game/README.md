@@ -73,3 +73,11 @@ Si vous voulez, je peux :
 - Ajouter des contrôles tactiles pour mobile.
 
 Dites-moi quelle option vous intéresse.
+
+## Capture d'écran
+
+Voici une capture d'écran du jeu (fichier inclus dans `img/`):
+
+![Snake Screenshot](./img/sc_1.png)
+
+Si l'image ne s'affiche pas dans votre lecteur de fichiers Git ou sur la page GitHub, ouvrez `snake_game/img/sc_1.png` directement ou vérifiez que le chemin relatif vers l'image est correct après déplacement du dossier.
