@@ -2,7 +2,7 @@
 
 Lightweight Django Todo application (server-rendered) with Tailwind CSS for styling.
 
-This README covers how to run the project locally, build the frontend assets (Tailwind), and shows where to add screenshots or animated GIFs (use the `img/` and `gif/` folders).
+This README covers how to run the project locally, build the frontend assets (Tailwind), and includes example screenshots/GIFs placed in the `img/` and `gif/` folders.
 
 ---
 
@@ -21,8 +21,6 @@ Optional folders you can place visual assets in (add them if they don't already 
 
 - `img/` — screenshots (PNG/JPG) — for example `img/screenshot.png`
 - `gif/` — animated GIFs demonstrating UI flows — for example `gif/demo.gif`
-
-You can reference these in this README using relative links.
 
 ---
 
@@ -109,17 +107,12 @@ The repository includes model tests for the core `Task` behavior.
 
 ---
 
-## Adding screenshots and GIFs
+## Screenshots and GIFs
 
-To embed images or animated demos in this README, create the folders `img/` and/or `gif/` at the project root and add files there. Example Markdown:
+![App screenshot](img/sc.png)
 
-```markdown
-![App screenshot](img/screenshot.png)
+![Quick demo](gif/sc_gif.gif)
 
-![Quick demo](gif/demo.gif)
-```
-
-Place the files and commit them so the README displays them in repository viewers.
 
 ---
 
@@ -127,3 +120,4 @@ Place the files and commit them so the README displays them in repository viewer
 
 - For production, build the CSS in CI and run `python manage.py collectstatic` as part of the deploy.
 - Serve static files from a CDN or S3 and run Django under a proper WSGI/ASGI server (Gunicorn/Uvicorn) behind a reverse proxy.
+
