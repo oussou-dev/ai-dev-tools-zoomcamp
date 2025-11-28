@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Login - Todo{% endblock %}
+
+{% block content %}
+  <h2>Login</h2>
+  {% if form.errors %}
+    <p style="color: red;">Please correct the errors below.</p>
+  {% endif %}
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if next %}
+      <input type="hidden" name="next" value="{{ next }}">
+    {% endif %}
+    <button type="submit">Login</button>
+  </form>
+  <p><a href="/">Back to home</a></p>
+{% endblock %}

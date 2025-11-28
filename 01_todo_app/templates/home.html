@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Todo{% endblock %}
+
+{% block content %}
+  <section>
+    <h2>Your tasks</h2>
+    <p><a class="btn" href="{% url 'task_create' %}">Create task</a></p>
+    <!-- Example: iterate tasks in the view with `tasks` context -->
+    {% if tasks %}
+      <ul>
+        {% for task in tasks %}
+          <li class="task">
+            <div class="task-left">
+              <strong>{{ task.title }}</strong>
+              <div class="meta">{% if task.due_date %}Due: {{ task.due_date|date:"M d, Y H:i" }}{% endif %} {% if task.completed %}<span class="badge done">Done</span>{% endif %}</div>
+            </div>
+            <div class="task-actions">
+              <a class="link" href="{% url 'task_edit' task.pk %}">Edit</a>
+              <a class="link danger" href="{% url 'task_delete' task.pk %}">Delete</a>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No tasks yet.</p>
+    {% endif %}
+  </section>
+{% endblock %}
