@@ -69,8 +69,5 @@ This repository contains a simple demo implementation — feel free to fork and 
 
 ## Screenshot
 
-Here is a screenshot included in `img/`:
-
 ![Snake Screenshot](./img/sc_1.png)
 
-If the image does not appear in your file viewer or on GitHub, open `snake_game/img/sc_1.png` directly or check that the relative path to the image is correct after moving the folder.
