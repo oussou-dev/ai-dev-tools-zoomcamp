@@ -1,83 +1,76 @@
 # Snake — React
 
-Jeu Snake minimal construit avec React + Vite, utilisant un canevas (`canvas`) pour le rendu et Tailwind CSS pour le style.
+Minimal Snake game built with React + Vite, using an HTML `canvas` for rendering and Tailwind CSS for styling.
 
-**Fonctionnalités**
-- Moteur de jeu simple avec boucle (interval) et détection de collision.
-- Nourriture aléatoire, augmentation de la longueur du serpent et accélération progressive.
-- Contrôles clavier (flèches / WASD), pause avec `Espace`, boutons pour démarrer/mettre en pause/recommencer.
-- Styles fournis via `Tailwind CSS`.
+**Features**
+- Simple game engine with a loop (interval) and collision detection.
+- Random food spawning, snake length increase, and gradual speed-up.
+- Keyboard controls (arrow keys / WASD), pause with `Space`, and on-screen buttons to start/pause/restart.
+- Styles provided via `Tailwind CSS`.
 
-**Prérequis**
-- Node.js (version 16+ recommandée) et `npm` installés.
+**Prerequisites**
+- Node.js (recommended v16+) and `npm` installed.
 
-**Installation & développement**
-1. Depuis la racine du projet, ouvrez un terminal dans le dossier `snake_game` :
+**Install & development**
+1. From the project root, open a terminal in the `snake_game` folder:
 
 ```bash
 cd snake_game
 ```
 
-2. Installez les dépendances :
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-3. Lancez le serveur de développement Vite :
+3. Start the Vite development server:
 
 ```bash
 npm run dev
 ```
 
-4. Ouvrez l'URL indiquée par Vite (par défaut `http://localhost:5173`).
+4. Open the URL shown by Vite (default: `http://localhost:5173`).
 
-**Commandes utiles**
-- `npm run dev` : démarre le serveur de développement.
-- `npm run build` : construit le bundle de production dans `dist/`.
-- `npm run preview` : sert le build produit pour vérification locale.
+**Useful scripts**
+- `npm run dev`: start development server.
+- `npm run build`: create a production bundle in `dist/`.
+- `npm run preview`: serve the produced build locally for verification.
 
-**Contrôles**
-- Déplacer : flèches du clavier ou `W A S D`.
-- Pause / reprise : appuyer sur `Espace`.
-- Boutons : `Start` / `Pause` / `Restart` depuis l'interface.
+**Controls**
+- Move: arrow keys or `W A S D`.
+- Pause / resume: press `Space`.
+- Buttons: `Start` / `Pause` / `Restart` in the UI.
 
-**Structure importante**
-- `index.html` : point d'entrée HTML chargé par Vite.
-- `src/main.jsx` : point d'entrée React.
-- `src/App.jsx` : composant racine.
-- `src/SnakeGame.jsx` : logique et rendu du jeu (canevas).
-- `src/index.css` : directives Tailwind et styles composants.
-- `tailwind.config.cjs` et `postcss.config.cjs` : configuration Tailwind/PostCSS.
+**Important structure**
+- `index.html`: HTML entrypoint loaded by Vite.
+- `src/main.jsx`: React entrypoint.
+- `src/App.jsx`: root component.
+- `src/SnakeGame.jsx`: game logic and canvas rendering.
+- `src/index.css`: Tailwind directives and component styles.
+- `tailwind.config.cjs` and `postcss.config.cjs`: Tailwind/PostCSS configuration.
 
-**Dépannage**
-- Erreur PostCSS / Tailwind :
-	- Assurez-vous d'avoir installé `tailwindcss`, `postcss` et `autoprefixer` dans `snake_game/package.json`.
-	- Si Vite signale une erreur disant que le plugin PostCSS a changé, utilisez la configuration compatible (le projet utilise la config standard pour Tailwind v3).
-- Si le style n'apparaît pas, vérifiez que `@tailwind base; @tailwind components; @tailwind utilities;` sont présents dans `src/index.css` et que `tailwind.config.cjs` référence bien les fichiers `index.html` et `src/**/*`.
+**Troubleshooting**
+- PostCSS / Tailwind errors:
+  - Make sure `tailwindcss`, `postcss` and `autoprefixer` are listed in `snake_game/package.json` and installed.
+  - If Vite reports that the PostCSS plugin configuration changed, use the compatible configuration for your Tailwind version (this project uses the standard Tailwind v3 setup).
+- If styles are missing, verify that `@tailwind base; @tailwind components; @tailwind utilities;` are present in `src/index.css` and that `tailwind.config.cjs` includes `index.html` and `src/**/*` in its `content` paths.
 
-**Améliorations possibles**
-- Touch controls pour mobile.
-- Sauvegarde du meilleur score dans `localStorage`.
-- Animations CSS / transitions pour l'UI.
-- Options de difficulté (vitesse initiale, grille plus grande).
+**Possible improvements**
+- Touch controls for mobile.
+- Store high scores in `localStorage`.
+- CSS animations / transitions for the UI.
+- Difficulty options (initial speed, larger grid).
 
-**Crédits**
-Ce dépôt contient un exemple simple réalisé comme démo; vous pouvez le forker et l'adapter.
+**Credits**
+This repository contains a simple demo implementation — feel free to fork and adapt it.
 
 ---
 
-Si vous voulez, je peux :
-- Lancer `npm run dev` ici pour vérifier (si l'environnement autorise l'exécution).
-- Ajouter le stockage du meilleur score.
-- Ajouter des contrôles tactiles pour mobile.
+## Screenshot
 
-Dites-moi quelle option vous intéresse.
-
-## Capture d'écran
-
-Voici une capture d'écran du jeu (fichier inclus dans `img/`):
+Here is a screenshot included in `img/`:
 
 ![Snake Screenshot](./img/sc_1.png)
 
-Si l'image ne s'affiche pas dans votre lecteur de fichiers Git ou sur la page GitHub, ouvrez `snake_game/img/sc_1.png` directement ou vérifiez que le chemin relatif vers l'image est correct après déplacement du dossier.
+If the image does not appear in your file viewer or on GitHub, open `snake_game/img/sc_1.png` directly or check that the relative path to the image is correct after moving the folder.
