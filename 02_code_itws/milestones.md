@@ -69,13 +69,24 @@ This document summarizes the milestones completed for the **Online Coding Interv
 ## ✅ Milestone 10: Real-time Collaboration & Languages
 - **Goal**: Enable real-time coding and expand language support.
 - **Completed**:
-  - Added support for **Ruby** (alongside Python and JS).
   - Configured **Django Channels** and **Daphne** for WebSockets.
   - Implemented **Real-time Collaboration**:
     - Users in the same room see code changes instantly.
     - Added debouncing for performance.
-    - Fixed infinite loop issues.
+    - Implemented language synchronization.
+  - **Language Support**:
+    - Python (Pyodide WASM)
+    - JavaScript (Client-side execution)
+    - (Ruby support available in backend/hooks but disabled in UI for simplicity)
   - Verified with `collaboration.spec.js` E2E tests.
 
+## ✅ Milestone 11: Containerization
+- **Goal**: Package the application for easy deployment.
+- **Completed**:
+  - Created multi-stage **Dockerfile** (Node build -> Python runtime).
+  - Configured **Whitenoise** to serve frontend assets from Django.
+  - Added SPA fallback routing.
+  - Verified single-container deployment.
+
 ---
-**Status**: All planned milestones are **COMPLETE**. The platform is fully functional with real-time collaboration and client-side execution.
+**Status**: All planned milestones are **COMPLETE**. The platform is fully functional, collaborative, and containerized.

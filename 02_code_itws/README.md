@@ -76,7 +76,30 @@ We use Playwright for end-to-end testing.
    npx playwright show-report
    ```
 
+## Docker Support
+
+You can run the entire application (Frontend + Backend) in a single Docker container.
+
+1. **Build the image**:
+   ```bash
+   docker build -t code-itws .
+   ```
+
+2. **Run the container**:
+   ```bash
+   docker run -p 8000:8000 code-itws
+   ```
+
+   Access the application at `http://localhost:8000`.
+
+## Features
+- **Real-time Collaboration**: Code changes are synced instantly between users in the same room.
+- **Client-Side Execution**: Code runs securely in your browser using WebAssembly (Pyodide for Python).
+- **Multi-Language Support**: Python and JavaScript.
+- **Modern Editor**: Powered by CodeMirror 6 with syntax highlighting.
+
 ## Tech Stack
-- **Frontend**: React, Vite, Monaco Editor
-- **Backend**: Django, Django REST Framework
+- **Frontend**: React, Vite, CodeMirror 6, Pyodide (WASM)
+- **Backend**: Django, Django Channels (WebSockets), Daphne
 - **Testing**: Playwright
+- **DevOps**: Docker (Multi-stage build)
