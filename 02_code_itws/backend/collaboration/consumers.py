@@ -37,6 +37,16 @@ class CodeConsumer(AsyncWebsocketConsumer):
                     'sender_channel_name': self.channel_name
                 }
             )
+        elif message_type == 'language_update':
+            language = text_data_json['language']
+            await self.channel_layer.group_send(
+                self.room_group_name,
+                {
+                    'type': 'language_update',
+                    'language': language,
+                    'sender_channel_name': self.channel_name
+                }
+            )
 
     # Receive message from room group
     async def code_update(self, event):
@@ -48,4 +58,14 @@ class CodeConsumer(AsyncWebsocketConsumer):
             await self.send(text_data=json.dumps({
                 'type': 'code_update',
                 'code': code
+            }))
+
+    async def language_update(self, event):
+        language = event['language']
+        sender_channel_name = event.get('sender_channel_name')
+
+        if self.channel_name != sender_channel_name:
+            await self.send(text_data=json.dumps({
+                'type': 'language_update',
+                'language': language
             }))

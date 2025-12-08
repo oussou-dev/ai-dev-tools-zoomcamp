@@ -9,6 +9,9 @@ test.describe('Real-time Collaboration', () => {
         const page1 = await context1.newPage();
         const page2 = await context2.newPage();
 
+        page1.on('console', msg => console.log(`User 1: ${msg.text()}`));
+        page2.on('console', msg => console.log(`User 2: ${msg.text()}`));
+
         // Both users navigate to the same room
         const roomUrl = 'http://localhost:5173/room/test-collaboration-room';
         await page1.goto(roomUrl);
@@ -28,7 +31,7 @@ test.describe('Real-time Collaboration', () => {
         await editor1.type('print("Hello from User 1")');
 
         // Wait for debounce and network propagation
-        await page1.waitForTimeout(500);
+        await page1.waitForTimeout(1000);
 
         // Check that User 2 sees the same code
         const editor2Content = await page2.locator('.cm-content').textContent();
@@ -41,7 +44,7 @@ test.describe('Real-time Collaboration', () => {
         await editor2.type('print("Hello from User 2")');
 
         // Wait for debounce and network propagation
-        await page2.waitForTimeout(500);
+        await page2.waitForTimeout(1000);
 
         // Check that User 1 sees the updated code
         const editor1Content = await page1.locator('.cm-content').textContent();
@@ -72,11 +75,15 @@ test.describe('Real-time Collaboration', () => {
         await page1.selectOption('select', 'javascript');
 
         // Wait for propagation
-        await page1.waitForTimeout(500);
+        await page1.waitForTimeout(1000);
 
-        // Check that User 2 sees JavaScript code snippet
+        // Check that User 2 sees JavaScript code snippet AND language selector update
         const editor2Content = await page2.locator('.cm-content').textContent();
         expect(editor2Content).toContain('console.log');
+
+        // Verify language selector value
+        const langValue = await page2.inputValue('select');
+        expect(langValue).toBe('javascript');
 
         await context1.close();
         await context2.close();

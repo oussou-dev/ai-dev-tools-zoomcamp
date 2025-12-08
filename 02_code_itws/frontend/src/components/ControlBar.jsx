@@ -16,7 +16,6 @@ const ControlBar = ({ language, setLanguage, onRun, onShare, isLoading }) => {
                     ))} */}
                     <option value="python">Python</option>
                     <option value="javascript">JavaScript</option>
-                    <option value="ruby">Ruby</option>
                 </select>
                 <button
                     className="run-btn"
