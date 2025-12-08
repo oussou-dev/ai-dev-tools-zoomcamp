@@ -7,8 +7,12 @@ import { cpp } from '@codemirror/lang-cpp';
 import { StreamLanguage } from '@codemirror/language';
 import { ruby } from '@codemirror/legacy-modes/mode/ruby';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
+import { githubLight } from '@uiw/codemirror-theme-github';
+import { useTheme } from '../context/ThemeContext';
 
 const CodeEditor = ({ language, code, onChange }) => {
+    const { theme } = useTheme();
+
     const getLanguageExtension = (lang) => {
         switch (lang) {
             case 'javascript':
@@ -31,7 +35,7 @@ const CodeEditor = ({ language, code, onChange }) => {
             <CodeMirror
                 value={code}
                 height="100%"
-                theme={vscodeDark}
+                theme={theme === 'dark' ? vscodeDark : githubLight}
                 extensions={[getLanguageExtension(language)]}
                 onChange={(value) => onChange(value)}
             />

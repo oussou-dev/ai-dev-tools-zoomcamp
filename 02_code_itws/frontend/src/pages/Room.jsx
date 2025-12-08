@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
+import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import CodeEditor from '../components/CodeEditor';
 import ControlBar from '../components/ControlBar';
 import OutputPanel from '../components/OutputPanel';
@@ -142,6 +143,18 @@ const Room = () => {
         alert('Link copied to clipboard!');
     };
 
+    const [direction, setDirection] = useState('horizontal');
+
+    useEffect(() => {
+        const handleResize = () => {
+            setDirection(window.innerWidth < 768 ? 'vertical' : 'horizontal');
+        };
+
+        handleResize(); // Set initial
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <div className="room-container">
             <div className="room-header">
@@ -155,16 +168,23 @@ const Room = () => {
                 />
             </div>
             <div className="room-content">
-                <div className="editor-panel">
-                    <CodeEditor
-                        language={language}
-                        code={code}
-                        onChange={handleCodeChange}
-                    />
-                </div>
-                <div className="output-panel-wrapper">
-                    <OutputPanel output={output} />
-                </div>
+                <PanelGroup direction={direction}>
+                    <Panel defaultSize={60} minSize={30}>
+                        <div className="editor-panel">
+                            <CodeEditor
+                                language={language}
+                                code={code}
+                                onChange={handleCodeChange}
+                            />
+                        </div>
+                    </Panel>
+                    <PanelResizeHandle className="resize-handle" />
+                    <Panel defaultSize={40} minSize={20}>
+                        <div className="output-panel-wrapper">
+                            <OutputPanel output={output} />
+                        </div>
+                    </Panel>
+                </PanelGroup>
             </div>
         </div>
     );

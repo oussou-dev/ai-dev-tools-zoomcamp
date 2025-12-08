@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '../context/ThemeContext';
+import { Sun, Moon, Play, Share2 } from 'lucide-react';
 
 const ControlBar = ({ language, setLanguage, onRun, onShare, isLoading }) => {
-    // const languages = ['python', 'javascript', 'java', 'cpp']; // This line will be removed as options become static
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <div className="control-bar">
@@ -11,9 +13,6 @@ const ControlBar = ({ language, setLanguage, onRun, onShare, isLoading }) => {
                     onChange={(e) => setLanguage(e.target.value)}
                     className="language-select"
                 >
-                    {/* {languages.map(lang => (
-                        <option key={lang} value={lang}>{lang.toUpperCase()}</option>
-                    ))} */}
                     <option value="python">Python</option>
                     <option value="javascript">JavaScript</option>
                 </select>
@@ -23,11 +22,18 @@ const ControlBar = ({ language, setLanguage, onRun, onShare, isLoading }) => {
                     disabled={isLoading}
                     style={{ opacity: isLoading ? 0.7 : 1, cursor: isLoading ? 'not-allowed' : 'pointer' }}
                 >
-                    {isLoading ? 'Loading...' : 'Run Code'}
+                    <Play size={16} />
+                    {isLoading ? 'Running...' : 'Run'}
                 </button>
             </div>
             <div className="control-group">
-                <button onClick={onShare} className="share-btn">Share Link</button>
+                <button onClick={onShare} className="share-btn">
+                    <Share2 size={16} />
+                    Share
+                </button>
+                <button onClick={toggleTheme} className="theme-toggle-btn" title="Toggle Theme">
+                    {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                </button>
             </div>
         </div>
     );

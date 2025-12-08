@@ -1,24 +1,54 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :root {
-  --bg-color: #1e1e1e;
-  --panel-bg: #252526;
-  --text-color: #d4d4d4;
-  --accent-color: #007acc;
-  --border-color: #3e3e42;
-  --success-color: #4caf50;
+  /* Light Mode (Default) */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --accent-color: #2563eb;
+  --accent-hover: #1d4ed8;
+  --border-color: #e5e7eb;
+  --success-color: #10b981;
+  --panel-bg: #f9fafb;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+[data-theme='dark'] {
+  /* Dark Mode */
+  --bg-primary: #111827;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --accent-color: #3b82f6;
+  --accent-hover: #2563eb;
+  --border-color: #374151;
+  --success-color: #10b981;
+  --panel-bg: #1f2937;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.5);
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .app {
   height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -29,24 +59,39 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex: 1;
+  width: 100%;
   height: 100%;
   text-align: center;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+}
+
+.home-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, var(--accent-color), var(--success-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .create-btn {
-  padding: 12px 24px;
+  padding: 14px 28px;
   font-size: 1.2rem;
+  font-weight: 600;
   background-color: var(--accent-color);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s;
   margin-top: 20px;
+  box-shadow: var(--shadow-md);
 }
 
 .create-btn:hover {
-  background-color: #005fa3;
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
 }
 
 /* Room Page */
@@ -57,18 +102,20 @@ body {
 }
 
 .room-header {
-  padding: 10px 20px;
-  background-color: var(--panel-bg);
+  padding: 12px 24px;
+  background-color: var(--bg-secondary);
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: var(--shadow-sm);
 }
 
 .room-header h2 {
   margin: 0;
   font-size: 1.2rem;
-  font-weight: normal;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .room-content {
@@ -80,6 +127,8 @@ body {
 .editor-panel {
   flex: 2;
   border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .output-panel-wrapper {
@@ -87,34 +136,46 @@ body {
   background-color: var(--panel-bg);
   display: flex;
   flex-direction: column;
+  border-left: 1px solid var(--border-color);
 }
 
 /* Control Bar */
 .control-bar {
   display: flex;
   gap: 20px;
+  align-items: center;
 }
 
 .control-group {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  align-items: center;
 }
 
 .language-select {
-  padding: 6px;
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  padding: 8px 12px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
   border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
 }
 
 .run-btn,
-.share-btn {
-  padding: 6px 12px;
+.share-btn,
+.theme-toggle-btn {
+  padding: 8px 16px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .run-btn {
@@ -122,27 +183,167 @@ body {
   color: white;
 }
 
+.run-btn:hover {
+  opacity: 0.9;
+}
+
 .share-btn {
   background-color: var(--accent-color);
   color: white;
 }
 
+.share-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.theme-toggle-btn {
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--bg-secondary);
+  transform: rotate(15deg);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
 /* Output Panel */
 .output-panel {
-  padding: 10px;
+  padding: 16px;
   height: 100%;
   overflow-y: auto;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 .output-panel h3 {
   margin-top: 0;
   font-size: 1rem;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 5px;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .output-content pre {
   font-family: 'Fira Code', monospace;
   white-space: pre-wrap;
   word-wrap: break-word;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.output-error {
+  color: #ef4444;
+}
+
+/* Resize Handle */
+.resize-handle {
+  width: 4px;
+  background-color: var(--border-color);
+  cursor: col-resize;
+  transition: background-color 0.2s;
+}
+
+.resize-handle:hover,
+.resize-handle:active {
+  background-color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .resize-handle {
+    height: 4px;
+    width: 100%;
+    cursor: row-resize;
+  }
+
+  /* ... existing responsive styles ... */
+  /* We might need to change PanelGroup direction to vertical via JS media query or just let it be */
+  /* react-resizable-panels handles direction via prop, so CSS media query won't flip it automatically unless we pass direction prop dynamically */
+
+  .room-content {
+    flex-direction: column;
+  }
+
+  .editor-panel {
+    flex: 1;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    min-height: 50%;
+  }
+
+  .output-panel-wrapper {
+    flex: 1;
+    border-left: none;
+    min-height: 30%;
+  }
+
+  .control-bar {
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .control-group {
+    gap: 8px;
+  }
+
+  .room-header {
+    padding: 10px 16px;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .room-header h2 {
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .language-select {
+    flex: 1;
+  }
+
+  .run-btn,
+  .share-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+
+  .home-container h1 {
+    font-size: 2rem;
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .editor-panel {
+    min-height: 60%;
+  }
+
+  .output-panel-wrapper {
+    min-height: 40%;
+  }
+
+  .control-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .control-group {
+    justify-content: space-between;
+  }
 }
