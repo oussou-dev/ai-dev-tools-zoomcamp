@@ -88,5 +88,34 @@ This document summarizes the milestones completed for the **Online Coding Interv
   - Added SPA fallback routing.
   - Verified single-container deployment.
 
+## ✅ Milestone 12: Deployment Preparation
+- **Goal**: Prepare the app for production.
+- **Completed**:
+  - Created `deployment.md` guide.
+  - Configured production settings (Environment variables).
+
+## ✅ Milestone 13: UI Improvements
+- **Goal**: Modernize the UI and add Light/Dark mode.
+- **Completed**:
+  - Implemented **ThemeContext** for Light/Dark mode.
+  - Added **Theme Toggle** with Lucide icons.
+  - Refactored CSS to use variables for theming.
+  - Updated CodeEditor to switch themes dynamically.
+
+## ✅ Milestone 14: Responsive Design
+- **Goal**: Ensure the app works on all devices.
+- **Completed**:
+  - Added CSS media queries for mobile and tablet.
+  - Implemented stacked layout for small screens.
+  - Adjusted Control Bar and typography for touch targets.
+
+## ✅ Milestone 15: Resizable Panels & Polish
+- **Goal**: Improve usability and layout control.
+- **Completed**:
+  - Implemented **Resizable Panels** using `react-resizable-panels`.
+  - Added dynamic layout direction (vertical on mobile, horizontal on desktop).
+  - Fixed global centering for the Home page.
+  - Cleaned up `index.css` to remove conflicting styles.
+
 ---
-**Status**: All planned milestones are **COMPLETE**. The platform is fully functional, collaborative, and containerized.
+**Status**: All planned milestones are **COMPLETE**. The platform is fully functional, collaborative, containerized, and polished.

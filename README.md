@@ -14,5 +14,9 @@ A simple **Todo Application**. This project serves as an introduction to AI-assi
 
 ### 2. [02_code_itws](./02_code_itws)
 **Online Coding Interview Platform**. A real-time collaborative coding environment built with Django (Backend) and React (Frontend).
-- **Features**: Real-time code sync, multi-language support (Python, JS), client-side execution (WASM), and Docker support.
+- **Features**: 
+  - **Real-time Collaboration**: Code and language sync via WebSockets.
+  - **Multi-language Support**: Python (Pyodide), JavaScript (Client-side).
+  - **Modern UI**: Light/Dark mode, Resizable panels, Responsive design.
+  - **Deployment**: Dockerized, ready for Railway/Fly.io.
 

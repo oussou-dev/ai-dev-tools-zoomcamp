@@ -86,3 +86,9 @@ env/
 .pytest_cache/
 coverage.xml
 *.log
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
