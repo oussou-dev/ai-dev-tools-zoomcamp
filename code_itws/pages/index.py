@@ -1,4 +1,5 @@
 import reflex as rx
+from state import State
 
 
 def header() -> rx.Component:
@@ -32,6 +33,9 @@ def editor_panel() -> rx.Component:
     # The actual editor UI will be hydrated by our static JS that attaches CodeMirror to #editor
     return rx.box(
         rx.vstack(
+            # Hidden textarea bound to server state. CodeMirror will be initialized from this textarea
+            rx.textarea(id="code-textarea", value=State.get_code(), on_change=State.set_code, style={"display": "none"}),
+
             rx.hstack(
                 rx.heading("Shared Code Editor", size="md"),
                 rx.text("Real-time: ", id="status-label", color="orange.400"),

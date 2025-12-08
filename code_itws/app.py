@@ -1,12 +1,6 @@
 import reflex as rx
 from pages import index
-
-
-class State(rx.State):
-    """Application state for the collaborative editor."""
-
-    code: str = "# Welcome to CodeITWS\nprint('Hello from Reflex')\n"
-    language: str = "python"
+from state import State
 
 
 app = rx.App(state=State)
