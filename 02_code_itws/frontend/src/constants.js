@@ -8,15 +8,9 @@ greet("World")`,
 }
 
 greet("World");`,
-    java: `public class Main {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}`,
-    cpp: `#include <iostream>
+    ruby: `def greet(name)
+  puts "Hello, #{name}!"
+end
 
-int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
-}`
+greet("World")`
 };

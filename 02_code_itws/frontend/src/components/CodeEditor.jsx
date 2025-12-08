@@ -4,6 +4,8 @@ import { javascript } from '@codemirror/lang-javascript';
 import { python } from '@codemirror/lang-python';
 import { java } from '@codemirror/lang-java';
 import { cpp } from '@codemirror/lang-cpp';
+import { StreamLanguage } from '@codemirror/language';
+import { ruby } from '@codemirror/legacy-modes/mode/ruby';
 import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 
 const CodeEditor = ({ language, code, onChange }) => {
@@ -17,6 +19,8 @@ const CodeEditor = ({ language, code, onChange }) => {
                 return java();
             case 'cpp':
                 return cpp();
+            case 'ruby':
+                return StreamLanguage.define(ruby);
             default:
                 return python();
         }
