@@ -1,25 +1,35 @@
 import React from 'react';
-import Editor from '@monaco-editor/react';
+import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
+import { python } from '@codemirror/lang-python';
+import { java } from '@codemirror/lang-java';
+import { cpp } from '@codemirror/lang-cpp';
+import { vscodeDark } from '@uiw/codemirror-theme-vscode';
 
 const CodeEditor = ({ language, code, onChange }) => {
-    const handleEditorChange = (value) => {
-        onChange(value);
+    const getLanguageExtension = (lang) => {
+        switch (lang) {
+            case 'javascript':
+                return javascript();
+            case 'python':
+                return python();
+            case 'java':
+                return java();
+            case 'cpp':
+                return cpp();
+            default:
+                return python();
+        }
     };
 
     return (
-        <div className="code-editor-container">
-            <Editor
-                height="100%"
-                language={language}
+        <div className="code-editor-container" style={{ height: '100%', fontSize: '14px' }}>
+            <CodeMirror
                 value={code}
-                theme="vs-dark"
-                onChange={handleEditorChange}
-                options={{
-                    minimap: { enabled: false },
-                    fontSize: 14,
-                    scrollBeyondLastLine: false,
-                    automaticLayout: true,
-                }}
+                height="100%"
+                theme={vscodeDark}
+                extensions={[getLanguageExtension(language)]}
+                onChange={(value) => onChange(value)}
             />
         </div>
     );

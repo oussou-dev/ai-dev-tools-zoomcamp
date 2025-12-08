@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CodeEditor from '../components/CodeEditor';
 import ControlBar from '../components/ControlBar';
 import OutputPanel from '../components/OutputPanel';
+import { CODE_SNIPPETS } from '../constants';
 
 const Room = () => {
     const { roomId } = useParams();
-    const [code, setCode] = useState('// Start coding here...');
     const [language, setLanguage] = useState('python');
+    const [code, setCode] = useState(CODE_SNIPPETS['python']);
     const [output, setOutput] = useState('');
+
+    const handleLanguageChange = (newLanguage) => {
+        setLanguage(newLanguage);
+        setCode(CODE_SNIPPETS[newLanguage] || '');
+    };
 
     const handleRun = async () => {
         setOutput(`Running ${language} code...`);
@@ -43,7 +49,7 @@ const Room = () => {
                 <h2>Interview Room: {roomId}</h2>
                 <ControlBar
                     language={language}
-                    setLanguage={setLanguage}
+                    setLanguage={handleLanguageChange}
                     onRun={handleRun}
                     onShare={handleShare}
                 />

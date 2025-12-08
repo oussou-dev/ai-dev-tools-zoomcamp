@@ -1,0 +1,17 @@
+{
+  "name": "02_code_itws",
+  "version": "1.0.0",
+  "description": "A real-time collaborative coding platform with code execution capabilities.",
+  "main": "index.js",
+  "scripts": {
+    "server": ".venv/bin/python backend/manage.py runserver 8003",
+    "client": "npm run dev --prefix frontend",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm:server\" \"npm:client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
