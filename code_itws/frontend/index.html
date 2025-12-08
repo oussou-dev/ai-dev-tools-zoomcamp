@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CodeITWS — Collaborative Coding Interview</title>
+    <!-- Tailwind CDN for rapid styling (good for prototype) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+    <link rel="stylesheet" href="./static/css/style.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <header class="bg-white shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <svg class="w-8 h-8 text-indigo-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7l10 5 10-5-10-5z" fill="currentColor" />
+            <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1" fill="none" />
+          </svg>
+          <h1 class="text-xl font-semibold">CodeITWS</h1>
+          <p class="text-sm text-slate-500">Collaborative coding interviews</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <input id="share-link" class="px-3 py-2 border rounded-md text-sm w-72" readonly />
+          <button id="create-link" class="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-500">Create link</button>
+          <button id="copy-link" class="bg-white border px-3 py-2 rounded-md text-sm">Copy</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+      <div class="grid grid-cols-12 gap-6">
+        <section class="col-span-8">
+          <div class="bg-white rounded-lg shadow p-4 h-[72vh] flex flex-col">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <h2 class="text-lg font-medium">Shared Code Editor</h2>
+                <span id="status" class="text-sm text-amber-600">Real-time: disconnected</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <select id="language" class="px-2 py-1 border rounded text-sm">
+                  <option value="python">Python</option>
+                  <option value="javascript">JavaScript</option>
+                  <option value="java">Java</option>
+                  <option value="c">C</option>
+                  <option value="cpp">C++</option>
+                </select>
+                <button id="run-code" class="bg-emerald-600 text-white px-3 py-1 rounded text-sm">Run (browser)</button>
+              </div>
+            </div>
+
+            <div id="editor" class="flex-1 border rounded"></div>
+
+            <div class="mt-3 flex items-center justify-between">
+              <div class="text-sm text-slate-500">Everyone connected can edit the code. Changes propagate in realtime (backend integration pending).</div>
+              <div class="flex items-center gap-2">
+                <button id="undo" class="px-3 py-1 border rounded text-sm">Undo</button>
+                <button id="redo" class="px-3 py-1 border rounded text-sm">Redo</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <aside class="col-span-4">
+          <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <h3 class="font-medium mb-2">Session</h3>
+            <div class="text-sm text-slate-600 mb-3">Share the generated link with candidates to let them join this session.</div>
+            <div class="grid grid-cols-1 gap-2">
+              <div class="flex items-center gap-2">
+                <label class="text-xs text-slate-500 w-20">Room</label>
+                <input id="room" class="flex-1 px-2 py-1 border rounded text-sm" placeholder="room id" />
+              </div>
+              <div class="flex items-center gap-2">
+                <label class="text-xs text-slate-500 w-20">Language</label>
+                <div id="lang-preview" class="px-2 py-1 border rounded text-sm">Python</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <h3 class="font-medium mb-2">Output</h3>
+            <pre id="output" class="h-40 overflow-auto text-sm bg-slate-50 p-3 rounded border text-slate-700">Program output will appear here.</pre>
+          </div>
+
+          <div class="bg-white rounded-lg shadow p-4">
+            <h3 class="font-medium mb-2">Participants</h3>
+            <ul id="participants" class="text-sm text-slate-700">
+              <li>Owner (you)</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+    <script src="./static/js/editor.js"></script>
+  </body>
+</html>

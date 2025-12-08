@@ -1,0 +1,9 @@
+/* Small custom styles to ensure the editor fills the area */
+.CodeMirror {
+  height: 100%;
+}
+
+/* make the header inputs slightly smaller on mobile */
+@media (max-width: 640px) {
+  header .max-w-6xl { padding-left: 1rem; padding-right: 1rem; }
+}
