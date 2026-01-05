@@ -2,6 +2,8 @@
 
 This project implements an MCP (Model Context Protocol) server with tools for web scraping and documentation search.
 
+[MCP Homework](https://github.com/DataTalksClub/ai-dev-tools-zoomcamp/blob/main/cohorts/2025/03-mcp/homework.md)
+
 ## Setup
 
 ```bash
