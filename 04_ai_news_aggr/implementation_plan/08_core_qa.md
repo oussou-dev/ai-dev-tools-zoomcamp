@@ -1,4 +1,4 @@
-Prompt_27
+Prompt_26
 ```
 # Task_1
 Set up the testing infrastructure for the project.
@@ -19,7 +19,7 @@ Ensure we can run `pytest` and it detects the configuration.
 
 ---
 
-Prompt_28
+Prompt_27
 
 ```
 # Task_2
@@ -38,7 +38,8 @@ Verify that the Repository pattern works and data is saved correctly.
 
 ---
 
-Prompt_29
+
+Prompt_28
 
 ```
 # Task_3
@@ -54,3 +55,5 @@ Since we don't want to call real APIs (OpenAI/YouTube) during tests (to save mon
 Ensure the pipeline logic (the plumbing) works without needing real external connections.
 
 ```
+
+

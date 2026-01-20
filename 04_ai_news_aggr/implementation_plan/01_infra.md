@@ -70,7 +70,9 @@ This file defines the database service required for the application.
 5.  **Top-Level Volumes**:
     - Define the `postgres_data` volume at the bottom of the file.
 
+
 ```
+
 ---
 
 Prompt_03
