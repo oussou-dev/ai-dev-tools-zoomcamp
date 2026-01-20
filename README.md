@@ -20,3 +20,11 @@ A simple **Todo Application**. This project serves as an introduction to AI-assi
   - **Modern UI**: Light/Dark mode, Resizable panels, Responsive design.
   - **Deployment**: Dockerized, ready for Railway/Fly.io.
 
+### 3. [03_mcp](./03_mcp)
+**MCP Service**. A Model Context Protocol service that provides tools for calculating BMI and other utilities.
+
+### 4. [04_ai_news_aggr](./04_ai_news_aggr)
+**AI News Aggregator**. A comprehensive full-stack platform that scrapes AI news from multiple sources (YouTube, OpenAI, Anthropic), generates smart summaries using LLMs, and delivers personalized digests via email and an interactive dashboard.
+- **Tech Stack**: FastAPI, Streamlit, PostgreSQL, Docker, OpenAI/Anthropic APIs.
+- **Key Features**: Auto-scraping, AI Summarization, personalized curation, and a REST API.
+- **Development**: Built using "Vibe Coding" (AI-assisted development) with a detailed implementation plan.
