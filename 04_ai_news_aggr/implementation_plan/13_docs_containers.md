@@ -51,3 +51,49 @@ Update the file to orchestrate the full stack.
 # Goal
 Ensure `docker-compose up --build` works by creating the Dockerfile first, then referencing it.
 ```
+
+---
+
+Prompt_34
+```
+# Task_2
+Generate the final `README.md`.
+
+# Content Requirements (Strict Order)
+
+1.  **🚨 Vibe Coding / Recreation Guide (Top Priority)**:
+    - **Place this section at the very top**, immediately after the project title.
+    - **Content**: "This project was built using AI-assisted development ('Vibe Coding').  If you want to recreate it from scratch or understand the exact prompts used to build it, please refer to the **[Developer Guide (from_scratch.md)](./from_scratch.md)**."
+    - Add a mention that the `implementation_plan/` folder contains the "DNA" of the project.
+
+2.  **Project Title & Description**:
+    - Title: **AI News Aggregator**
+    - Description: A full-stack AI-powered news platform. It scrapes, summarizes, and serves AI trends via a FastAPI backend and a Streamlit dashboard.
+
+3.  **Architecture Diagram**:
+    - **Flow**: `[Scrapers] -> [Postgres] -> [FastAPI] -> [Streamlit]`.
+    - **AI**: Agents (Digest/Curator) run in the background via the API.
+
+4.  **Features**:
+    - **Multi-Source Scraping**: YouTube, OpenAI, Anthropic.
+    - **Smart Summarization**: GPT-4o-mini powered.
+    - **Interactive UI**: Trigger pipelines, view digests.
+    - **REST API**: Swagger docs available.
+    - **Containerized**: Full Docker support.
+
+5.  **Quick Start**:
+    - **Prerequisites**: Docker, Python 3.12, OpenAI API Key.
+    - **Step 1**: Clone repo.
+    - **Step 2**: `cp app/example.env .env` and fill keys.
+    - **Step 3 (The Magic Command)**:
+      ```bash
+      docker-compose up --build
+      ```
+    - **Step 4**: Open `http://localhost:8501` for the App and `http://localhost:8000/docs` for the API.
+
+6.  **Tech Stack**:
+    - Badges for Python, FastAPI, Streamlit, Docker, PostgreSQL.
+
+# Style
+Professional, clear, designed for developers who might want to fork or recreate the project.
+```
